@@ -113,15 +113,20 @@ public class MainActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
-                subScreen.setVisibility(View.VISIBLE);
+                try {
+                    subScreen.setVisibility(View.VISIBLE);
 
-                PrintProfile profile = new PrintProfile();
+                    PrintProfile profile = new PrintProfile();
 
 
-                subTvName.setText("Ten: " + patientName.getText().toString());
-                subTvHeight.setText("Chieu cao: " + patientHeight.getText().toString());
-                subTvWeight.setText("Can nang: " + patientWeight.getText().toString());
-                subTvDiagnosis.setText("Tinh trang: " + profile.printDiagnosis(Double.parseDouble(patientHeight.getText().toString()), Double.parseDouble(patientWeight.getText().toString())));
+                    subTvName.setText("Ten: " + patientName.getText().toString());
+                    subTvHeight.setText("Chieu cao: " + patientHeight.getText().toString());
+                    subTvWeight.setText("Can nang: " + patientWeight.getText().toString());
+                    subTvDiagnosis.setText("Tinh trang: " + profile.printDiagnosis(Double.parseDouble(patientHeight.getText().toString()), Double.parseDouble(patientWeight.getText().toString())));
+                }
+                catch (Exception e) {
+                    Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
